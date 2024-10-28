@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Реєстрація</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="form-container">
+  <h1>Реєстрація</h1>
+  <form th:action="@{/register}" method="post" th:object="${user}">
+    <!-- Загальне повідомлення про помилку -->
+    <div th:if="${error}" class="error-message">
+      <p th:text="${error}"></p>
+    </div>
+
+    <div class="input-group">
+      <label for="username">Ім'я користувача</label>
+      <input type="text" id="username" th:field="*{username}" required>
+      <div class="error-message" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+    </div>
+
+    <div class="input-group">
+      <label for="password">Пароль</label>
+      <input type="password" id="password" th:field="*{password}" required>
+      <div class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+    </div>
+
+    <div class="input-group">
+      <label for="email">Електронна пошта</label>
+      <input type="email" id="email" th:field="*{email}" required>
+      <div class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+    </div>
+
+    <div class="input-group">
+      <label for="age">Вік</label>
+      <input type="number" id="age" th:field="*{age}" min="18" required>
+      <div class="error-message" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+    </div>
+
+    <button type="submit" class="btn">Зареєструватися</button>
+  </form>
+</div>
+</body>
+</html>

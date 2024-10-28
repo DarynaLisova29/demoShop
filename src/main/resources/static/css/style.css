@@ -1,0 +1,287 @@
+/* Загальні стилі */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh;*/
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-top: 50px;
+}
+
+/* Панель навігації */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #007bff;
+    padding: 10px;
+    color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.navbar-right a {
+    margin-left: 10px;
+}
+
+/* Контейнери для форми */
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    margin-top: 50px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Стилі для головної сторінки */
+.main-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.main-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.main-container a {
+    display: block;
+    margin: 10px 0;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.main-container a:hover {
+    background-color: #0056b3;
+}
+
+/* Список товарів */
+.product-list {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product {
+    background-color: white;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 280px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Вирівнювання та однаковий розмір зображень */
+.product img {
+    max-width: 100%;
+    height: 200px; /* Встановлення однакової висоти для всіх зображень */
+    object-fit: contain; /* Масштабування зображень зберігаючи пропорції */
+    margin-bottom: 15px;
+}
+
+.product h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.product p {
+    font-size: 18px;
+    color: #555;
+}
+
+.product input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.product button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product button:hover {
+    background-color: #218838;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+    .products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .main-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+.filter-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.filter-form {
+    display: none; /* приховано за замовчуванням */
+    position: absolute;
+    top: 60px; /* трохи нижче від кнопки */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1;
+    width: 300px;
+    text-align: left;
+}
+
+.filter-form label, .filter-form input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.filter-form button {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+}
+
+.navbar-left a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.filter-button {
+    background-color: #007bff;
+    color: white;
+    /*color: white;*/
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.navbar-right a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+

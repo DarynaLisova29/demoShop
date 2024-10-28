@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список товарів</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <script>
+        // JavaScript для показу/приховування форми фільтрації
+        function toggleFilterForm() {
+            const form = document.getElementById("filterForm");
+            form.style.display = form.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+<!-- Панель навігації -->
+<div class="navbar">
+    <div class="navbar-left">
+        <a th:href="@{/products}">Товари</a>
+    </div>
+    <div class="navbar-right">
+        <button onclick="toggleFilterForm()" class="filter-button">Фільтрувати за ціною</button>
+        <div th:if="${session.user == null}">
+            <a th:href="@{/login}">Ввійти</a>
+            <a th:href="@{/register}">Зареєструватися</a>
+        </div>
+        <div th:if="${session.user != null}">
+            <span>Вітаємо, <span th:text="${session.user}"></span></span>
+            <a>Кошик</a>
+            <a th:href="@{/logout}">Вийти</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Форма для фільтрації за ціною -->
+<div class="filter-container">
+    <div class="filter-form" id="filterForm">
+        <form th:action="@{/products/filter}" method="get">
+            <label for="minPrice">Мінімальна ціна:</label>
+            <input type="number" id="minPrice" name="minPrice"
+                   th:value="${minPrice}"
+                   min="${dbMinPrice}"
+                   step="0.01"
+                   th:placeholder="'Мінімум: ' + ${dbMinPrice}" />
+
+            <label for="maxPrice">Максимальна ціна:</label>
+            <input type="number" id="maxPrice" name="maxPrice"
+                   th:value="${maxPrice}"
+                   max="${dbMaxPrice}"
+                   step="0.01"
+                   th:placeholder="'Максимум: ' + ${dbMaxPrice}" />
+
+            <button type="submit">Фільтрувати</button>
+        </form>
+    </div>
+</div>
+
+<!-- Список товарів -->
+<div class="product-list">
+    <h1>Список товарів</h1>
+    <div class="products">
+        <div class="product" th:each="product : ${products}">
+            <img th:src="${product.url}" alt="Зображення товару" class="product-image">
+            <h2 th:text="${product.name}"></h2>
+            <p>Ціна: <span th:text="${product.price}"></span> грн</p>
+            <form th:action="@{/add-to-cart}" method="post">
+                <input type="hidden" th:value="${product.id}" name="productId">
+                <label for="quantity">Кількість:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                <button type="submit">Додати в кошик</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
